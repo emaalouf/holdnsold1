@@ -1,0 +1,1322 @@
+{
+    "info": {
+        "name": "Laravel API Collection",
+        "description": "A collection of API endpoints for the Laravel application.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "version": "1.0.0"
+    },
+    "item": [
+        {
+            "name": "Authentication & User Account",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/register",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auth", "register"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"string\",\n    \"email\": \"user@example.com\",\n    \"password\": \"string\",\n    \"password_confirmation\": \"string\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/login",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auth", "login"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"string\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/logout",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auth", "logout"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get User",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/user",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auth", "user"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update User",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/user",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auth", "user"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"new name\",\n    \"email\": \"newemail@example.com\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Forgot Password",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/password/forgot",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auth", "password", "forgot"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"user@example.com\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Reset Password",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/password/reset",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auth", "password", "reset"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"user@example.com\",\n    \"token\": \"reset_token\",\n    \"password\": \"new_password\",\n    \"password_confirmation\": \"new_password\"\n}"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Categories",
+            "item": [
+                {
+                    "name": "List Categories",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/categories",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "categories"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Category",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/categories/:category",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "categories", ":category"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Category",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/categories",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "categories"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"New Category\",\n    \"description\": \"Category description\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Category",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/categories/:category",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "categories", ":category"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Updated Category\",\n    \"description\": \"Updated description\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Category",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/categories/:category",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "categories", ":category"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Auctions",
+            "item": [
+                {
+                    "name": "List Auctions",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Auction",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List Bids for Auction",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/bids",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "bids"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Auction",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Auction Title\",\n    \"description\": \"Auction Description\",\n    \"category_id\": 1,\n    \"starting_price\": 100,\n    \"end_time\": \"2024-01-01T00:00:00Z\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Auction",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Updated Title\",\n    \"description\": \"Updated Description\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Auction",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Close Auction",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/close",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "close"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add to Watchlist",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/watch",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "watch"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove from Watchlist",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/watch",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "watch"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Watchlist",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/user/watchlist",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "user", "watchlist"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Auction Analytics",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/analytics",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "analytics"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Seller Stats",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/user/seller-stats",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "user", "seller-stats"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Share Auction",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/share/:platform",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "share", ":platform"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Share Stats",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/share-stats",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "share-stats"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Bidding",
+            "item": [
+                {
+                    "name": "Place a Bid",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/bid",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "bid"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"amount\": 150\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get User Bids",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/users/:user/bids",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "users", ":user", "bids"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Payments",
+            "item": [
+                {
+                    "name": "Checkout",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/checkout",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "checkout"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"payment_method\": \"credit_card\",\n    \"details\": {\n        \"card_number\": \"4111111111111111\",\n        \"expiry_date\": \"12/25\",\n        \"cvv\": \"123\"\n    }\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Payment",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/payments/:payment",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "payments", ":payment"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Admin",
+            "item": [
+                {
+                    "name": "List Users",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/admin/users",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "admin", "users"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update User",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/admin/users/:user",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "admin", "users", ":user"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Updated Name\",\n    \"role\": \"user\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Admin Dashboard",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/admin/dashboard",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "admin", "dashboard"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Bulk Action on Auctions",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/admin/admin/auctions/bulk-action",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "admin", "admin", "auctions", "bulk-action"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"action\": \"delete\",\n    \"auction_ids\": [1, 2, 3]\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Bulk Action on Users",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/admin/admin/users/bulk-action",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "admin", "admin", "users", "bulk-action"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"action\": \"suspend\",\n    \"user_ids\": [4, 5, 6]\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Admin Recharge Wallet",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/admin/admin/users/:user/wallet/recharge",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "admin", "admin", "users", ":user", "wallet", "recharge"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"amount\": 500\n}"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Comments",
+            "item": [
+                {
+                    "name": "Add Comment",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/comments",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "comments"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"content\": \"This is a comment.\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List Comments",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/comments",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "comments"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Comment",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/comments/:comment",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "comments", ":comment"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Reviews",
+            "item": [
+                {
+                    "name": "Add Review",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/users/:user/reviews",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "users", ":user", "reviews"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"rating\": 5,\n    \"comment\": \"Excellent seller!\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List Reviews",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/users/:user/reviews",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "users", ":user", "reviews"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get User Rating",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/users/:user/rating",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "users", ":user", "rating"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Notifications",
+            "item": [
+                {
+                    "name": "List Notifications",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/notifications",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "notifications"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Mark Notifications as Read",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/notifications/mark-read",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "notifications", "mark-read"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"notification_ids\": [1, 2, 3]\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Unread Count",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/notifications/unread-count",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "notifications", "unread-count"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Messages",
+            "item": [
+                {
+                    "name": "List Conversations",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/messages",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "messages"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Conversation",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/messages/:conversation",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "messages", ":conversation"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Send Message",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/messages/:user",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "messages", ":user"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"message\": \"Hello!\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Message",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/messages/:message",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "messages", ":message"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Auto Bids",
+            "item": [
+                {
+                    "name": "Setup Auto Bid",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/auto-bid",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "auto-bid"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"max_bid_amount\": 200\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List Auto Bids",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/user/auto-bids",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "user", "auto-bids"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Auto Bid",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auto-bids/:autoBid",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auto-bids", ":autoBid"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Reports",
+            "item": [
+                {
+                    "name": "Report Auction",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/report",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "report"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"reason\": \"Inappropriate content\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Report User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/users/:user/report",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "users", ":user", "report"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"reason\": \"Spam\"\n}"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Wallet",
+            "item": [
+                {
+                    "name": "Get Wallet",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/wallet",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "wallet"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Draws",
+            "item": [
+                {
+                    "name": "List Draws",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/draws",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "draws"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Draw",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/draws/:draw",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "draws", ":draw"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Enter Draw",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/draws/:draw/enter",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "draws", ":draw", "enter"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Draw",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auctions/:auction/draws",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auctions", ":auction", "draws"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Draw Name\",\n    \"description\": \"Draw Description\",\n    \"draw_date\": \"2024-02-01T00:00:00Z\"\n}"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Select Winner",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/draws/:draw/select-winner",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "draws", ":draw", "select-winner"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"winner_id\": 7\n}"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "https://your-api-domain.com"
+        },
+        {
+            "key": "token",
+            "value": ""
+        },
+        {
+            "key": "admin_token",
+            "value": ""
+        }
+    ]
+} 
